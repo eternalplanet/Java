@@ -1,0 +1,34 @@
+package demo1;
+import java.io.*;
+
+public class Demo2 {
+
+        public static void main(String args[ ]){
+        File fileIn=new File("D:\\abc.txt");
+        File fileOut=new File("D:\\copyabc.txt");
+        try{
+       FileReader in=new FileReader(fileIn);
+        int n=0;
+        while(n!=-1)
+        {
+            n=in.read();
+            System.out.print((char)n);
+             FileWriter out=new FileWriter(fileOut,true);
+             out.write((char)n);
+              out.close();
+        }
+           
+             FileReader copy=new FileReader(fileOut);
+              int a=0;
+              while(a!=-1)
+        {
+            a=copy.read();
+            System.out.print((char)a);
+        }
+           
+        }
+        catch(IOException e){
+             System.out.println(e);
+        } 
+    }
+}
