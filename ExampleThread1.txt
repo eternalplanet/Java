@@ -1,0 +1,72 @@
+
+
+public class test1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s1="小红",s2="小明";
+		Food food=new Food(s1,s2);
+		food.setCount(100);
+		food.hong.start();
+		food.ming.start();
+		
+	}
+}
+
+
+	class Food implements Runnable{
+
+public class test1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s1="小红",s2="小明";
+		Food food=new Food(s1,s2);
+		food.setCount(100);
+		food.hong.start();
+		food.ming.start();
+		
+	}
+}
+
+
+	class Food implements Runnable{
+	private int count=0;
+	String name1,name2;
+	Thread hong,ming;
+	Food(String s1,String s2){
+		name1=s1;
+		name2=s2;
+		hong=new Thread(this);
+		ming=new Thread(this);
+		hong.setName(s1);
+		ming.setName(s2);
+		
+	}
+	public void setCount(int a) {
+		count=a;
+		
+	}
+	Object obj=new Object();
+	public void run() {
+		while(true) {
+			synchronized(obj) {
+			if(Thread.currentThread()==hong) {
+				count=count-1;
+				System.out.println("我是"+name1+"吃了一个苹果"+","+"还余"+count+"个苹果");
+				
+			}
+			else if(Thread.currentThread()==ming) {
+				count=count-2;
+				System.out.println("我是"+name2+"吃了两个苹果"+","+"还余"+count+"个苹果");
+				
+			}
+			if(count==0) {
+				System.out.println("苹果吃完了");
+				System.exit(0);
+				
+			}
+		}
+		}
+	}
+	}
